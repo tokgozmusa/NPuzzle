@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NPuzzle</string>
+    <string name="start_text">Start</string>
 </resources>
