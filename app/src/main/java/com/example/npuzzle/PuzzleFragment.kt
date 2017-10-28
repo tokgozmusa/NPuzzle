@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_puzzle.*
 
 /**
  * Created by tokgozmusa on 28/10/2017.
@@ -32,6 +33,8 @@ class PuzzleFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        val puzzleBoardView = PuzzleBoardView(context)
+        puzzle_container.addView(puzzleBoardView)
     }
 
     override fun onStart() {
