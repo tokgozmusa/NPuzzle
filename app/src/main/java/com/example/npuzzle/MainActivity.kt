@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.WindowManager
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * Created by tokgozmusa on 28/10/2017.
@@ -16,14 +15,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_main)
-
         showMainFragment()
-
-        button_start.setOnClickListener {
-            showPuzzleFragment()
-        }
     }
 
     fun hideAppTitle() {
@@ -53,6 +46,5 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragment_holder, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-
     }
 }

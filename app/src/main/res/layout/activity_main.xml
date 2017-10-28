@@ -4,15 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.npuzzle.MainActivity"
-    android:orientation="vertical">
-
-    <Button
-        android:id="@+id/button_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/start_text"
-        android:textAllCaps="false"/>
+    android:orientation="vertical"
+    tools:context="com.example.npuzzle.MainActivity">
+    
     <FrameLayout
         android:id="@+id/fragment_holder"
         android:layout_width="match_parent"

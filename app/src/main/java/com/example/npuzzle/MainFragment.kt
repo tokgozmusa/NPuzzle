@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_main.*
 
 /**
  * Created by tokgozmusa on 28/10/2017.
@@ -32,6 +33,9 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        button_start.setOnClickListener {
+            (activity as MainActivity).showPuzzleFragment()
+        }
     }
 
     override fun onStart() {
