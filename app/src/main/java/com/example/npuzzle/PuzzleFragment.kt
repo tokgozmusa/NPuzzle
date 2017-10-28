@@ -61,7 +61,4 @@ class PuzzleFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
     }
-
-
-
 }

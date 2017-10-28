@@ -61,7 +61,4 @@ class MainFragment : Fragment() {
     override fun onDetach() {
         super.onDetach()
     }
-
-
-
 }
