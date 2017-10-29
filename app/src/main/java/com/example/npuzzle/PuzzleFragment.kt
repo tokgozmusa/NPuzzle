@@ -35,6 +35,11 @@ class PuzzleFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val puzzleBoardView = PuzzleBoardView(context, (context as MainActivity).n)
         puzzle_container.addView(puzzleBoardView)
+
+        button_new_game.setOnClickListener {
+            puzzleBoardView.initGame()
+            puzzleBoardView.invalidate()
+        }
     }
 
     override fun onStart() {
