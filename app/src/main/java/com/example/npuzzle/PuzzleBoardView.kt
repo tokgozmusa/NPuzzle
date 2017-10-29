@@ -28,35 +28,50 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
 
     val mat = Array(n) { Array(n) { PuzzleBlock(context, 0, 0F, 0F, 0F) } }
 
-    var emptyBlockIndex = Point()
+    var emptyBlockIndex = Point(n - 1, n - 1)
 
     init {
         paint.isAntiAlias = true
     }
 
     fun initGame() {
+        emptyBlockIndex = Point(n - 1, n - 1)
         size = containerWidth / n
         var x = 0
         var y = 0
-        var ID = 0
-
-        val list = mutableListOf<Int>()
-        for (i in 0 until n * n) {
-            list.add(i, i)
-        }
-        Collections.shuffle(list)
-
+        var ID = 1
         for (i in 0 until mat.size) {
             for (j in 0 until mat[0].size) {
-                mat[i][j] = PuzzleBlock(context, list[ID], x.toFloat(), y.toFloat(), size.toFloat())
-                if (list[ID] == 0) {
-                    emptyBlockIndex = Point(i, j)
-                }
-                x += size
+                mat[i][j] = PuzzleBlock(context, ID, x.toFloat(), y.toFloat(), size.toFloat())
                 ID++
+                ID %= n * n
+                x += size
             }
             x = 0
             y += size
+        }
+        shuffleMat()
+    }
+
+    fun shuffleMat() {
+        var iteration = 100
+        for (i in 0 until iteration) {
+            val options = mutableListOf<Point>()
+            if (emptyBlockIndex.x + 1 < n) {
+                options.add(Point(emptyBlockIndex.x + 1, emptyBlockIndex.y))
+            }
+            if (emptyBlockIndex.x - 1 >= 0) {
+                options.add(Point(emptyBlockIndex.x - 1, emptyBlockIndex.y))
+            }
+            if (emptyBlockIndex.y + 1 < n) {
+                options.add(Point(emptyBlockIndex.x, emptyBlockIndex.y + 1))
+            }
+            if (emptyBlockIndex.y - 1 >= 0) {
+                options.add(Point(emptyBlockIndex.x, emptyBlockIndex.y - 1))
+            }
+            Collections.shuffle(options)
+            val selectedIndex = options.get(0)
+            swapBlock(selectedIndex.x, selectedIndex.y)
         }
     }
 
@@ -94,11 +109,15 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
         return true
     }
 
-    fun moveBlock(i: Int, j: Int) {
+    fun swapBlock(i: Int, j: Int) {
         val ID = mat[i][j].ID
         mat[i][j].ID = 0
         mat[emptyBlockIndex.x][emptyBlockIndex.y].ID = ID
         emptyBlockIndex = Point(i, j)
+    }
+
+    fun makeMove(i: Int, j: Int) {
+        swapBlock(i, j)
         invalidate()
         if (isSolution()) {
             val alertDialog = AlertDialog.Builder(context).create()
@@ -139,13 +158,13 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
                 val j = (event.x / size).toInt()
 
                 if (i + 1 < n && i + 1 == emptyBlockIndex.x && j == emptyBlockIndex.y) {
-                    moveBlock(i, j)
+                    makeMove(i, j)
                 } else if (i - 1 >= 0 && i - 1 == emptyBlockIndex.x && j == emptyBlockIndex.y) {
-                    moveBlock(i, j)
+                    makeMove(i, j)
                 } else if (j + 1 < n && i == emptyBlockIndex.x && j + 1 == emptyBlockIndex.y) {
-                    moveBlock(i, j)
+                    makeMove(i, j)
                 } else if (j - 1 >= 0 && i == emptyBlockIndex.x && j - 1 == emptyBlockIndex.y) {
-                    moveBlock(i, j)
+                    makeMove(i, j)
                 }
 
                 Log.d("event up: ", event.x.toString() + ":" + event.y.toString())
