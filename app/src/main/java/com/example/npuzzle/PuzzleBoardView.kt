@@ -1,14 +1,17 @@
 package com.example.npuzzle
 
 import android.annotation.SuppressLint
+import android.app.FragmentManager
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Point
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import java.util.*
+
 
 @SuppressLint("ViewConstructor")
 /**
@@ -31,15 +34,7 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
         paint.isAntiAlias = true
     }
 
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
-
-        containerWidth = measuredWidth
-
-        if(containerWidth == 0) {
-            return
-        }
-
+    fun initGame() {
         size = containerWidth / n
         var x = 0
         var y = 0
@@ -65,12 +60,63 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
         }
     }
 
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec)
+
+        containerWidth = measuredWidth
+
+        if (containerWidth == 0) {
+            return
+        }
+
+        initGame()
+    }
+
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
         for (i in 0 until mat.size) {
             for (j in 0 until mat[0].size) {
                 mat[i][j].onDraw(canvas!!, paint)
             }
+        }
+    }
+
+    fun isSolution(): Boolean {
+        var count = 1
+        for (i in 0 until mat.size) {
+            for (j in 0 until mat[0].size) {
+                if (mat[i][j].ID != count && count != n * n) {
+                    return false
+                }
+                count++
+            }
+        }
+        return true
+    }
+
+    fun moveBlock(i: Int, j: Int) {
+        val ID = mat[i][j].ID
+        mat[i][j].ID = 0
+        mat[emptyBlockIndex.x][emptyBlockIndex.y].ID = ID
+        emptyBlockIndex = Point(i, j)
+        invalidate()
+        if (isSolution()) {
+            val alertDialog = AlertDialog.Builder(context).create()
+            alertDialog.setTitle("Congratulations!")
+            alertDialog.setCancelable(false)
+            alertDialog.setMessage("Do you want to play again?")
+            alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes", { dialog, which ->
+                // refresh the game
+                initGame()
+                invalidate()
+                dialog.dismiss()
+            })
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No", { dialog, which ->
+                // return to main menu
+                (context as MainActivity).manager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+                dialog.dismiss()
+            })
+            alertDialog.show()
         }
     }
 
@@ -93,28 +139,14 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
                 val j = (event.x / size).toInt()
 
                 if (i + 1 < n && i + 1 == emptyBlockIndex.x && j == emptyBlockIndex.y) {
-                    val ID = mat[i][j].ID
-                    mat[i][j].ID = 0
-                    mat[i + 1][j].ID = ID
-                    emptyBlockIndex = Point(i, j)
+                    moveBlock(i, j)
                 } else if (i - 1 >= 0 && i - 1 == emptyBlockIndex.x && j == emptyBlockIndex.y) {
-                    val ID = mat[i][j].ID
-                    mat[i][j].ID = 0
-                    mat[i - 1][j].ID = ID
-                    emptyBlockIndex = Point(i, j)
+                    moveBlock(i, j)
                 } else if (j + 1 < n && i == emptyBlockIndex.x && j + 1 == emptyBlockIndex.y) {
-                    val ID = mat[i][j].ID
-                    mat[i][j].ID = 0
-                    mat[i][j + 1].ID = ID
-                    emptyBlockIndex = Point(i, j)
+                    moveBlock(i, j)
                 } else if (j - 1 >= 0 && i == emptyBlockIndex.x && j - 1 == emptyBlockIndex.y) {
-                    val ID = mat[i][j].ID
-                    mat[i][j].ID = 0
-                    mat[i][j - 1].ID = ID
-                    emptyBlockIndex = Point(i, j)
+                    moveBlock(i, j)
                 }
-
-                invalidate()
 
                 Log.d("event up: ", event.x.toString() + ":" + event.y.toString())
             }

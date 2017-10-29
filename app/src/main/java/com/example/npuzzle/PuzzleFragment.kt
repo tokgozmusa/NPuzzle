@@ -1,7 +1,6 @@
 package com.example.npuzzle
 
 import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
