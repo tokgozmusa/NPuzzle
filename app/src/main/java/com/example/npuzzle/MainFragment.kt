@@ -33,8 +33,14 @@ class MainFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        button_start.setOnClickListener {
-            (activity as MainActivity).showPuzzleFragment()
+        button_three_x_three.setOnClickListener {
+            (activity as MainActivity).showPuzzleFragment(3)
+        }
+        button_four_x_four.setOnClickListener {
+            (activity as MainActivity).showPuzzleFragment(4)
+        }
+        button_five_x_five.setOnClickListener {
+            (activity as MainActivity).showPuzzleFragment(5)
         }
     }
 

@@ -17,8 +17,6 @@ class PuzzleFragment : Fragment() {
 
     val TAG = "PuzzleFragment"
 
-    val n: Int = 3
-
     override fun onAttach(context: Context?) {
         super.onAttach(context)
     }
@@ -35,7 +33,7 @@ class PuzzleFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val puzzleBoardView = PuzzleBoardView(context, n)
+        val puzzleBoardView = PuzzleBoardView(context, (context as MainActivity).n)
         puzzle_container.addView(puzzleBoardView)
     }
 

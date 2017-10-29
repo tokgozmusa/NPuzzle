@@ -12,6 +12,7 @@ import android.view.WindowManager
 class MainActivity : AppCompatActivity() {
 
     val manager = supportFragmentManager
+    var n = 3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +41,8 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
-    fun showPuzzleFragment() {
+    fun showPuzzleFragment(newN: Int) {
+        n = newN
         val transaction = manager.beginTransaction();
         val fragment = PuzzleFragment()
         transaction.replace(R.id.fragment_holder, fragment)

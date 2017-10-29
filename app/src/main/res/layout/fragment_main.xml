@@ -2,18 +2,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
+              android:gravity="center"
               android:orientation="vertical">
-
-    <Button
-        android:id="@+id/button_start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/start_text"
-        android:textAllCaps="false"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Main Fragment"/>
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginBottom="40dp"
+        android:textSize="30sp"/>
+
+    <Button
+        android:id="@+id/button_three_x_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/threeXthree"/>
+
+    <Button
+        android:id="@+id/button_four_x_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fourXfour"/>
+
+    <Button
+        android:id="@+id/button_five_x_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fiveXfive"/>
+
 </LinearLayout>
