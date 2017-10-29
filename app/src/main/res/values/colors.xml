@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="gameBackground">#FAFAFA</color>
     <color name="puzzleBlock">#BBDEFB</color>
+    <color name="puzzleBlockText">#025da9</color>
 </resources>

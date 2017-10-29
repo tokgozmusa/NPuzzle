@@ -18,7 +18,7 @@ class PuzzleFragment : Fragment() {
 
     val TAG = "PuzzleFragment"
 
-    val n: Int = 4
+    val n: Int = 3
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)

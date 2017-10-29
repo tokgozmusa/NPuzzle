@@ -3,10 +3,8 @@ package com.example.npuzzle
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Point
-import android.support.v4.content.ContextCompat
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
@@ -25,7 +23,7 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
 
     var size = 0
 
-    val mat = Array(n) { Array(n) { PuzzleBlock() } }
+    val mat = Array(n) { Array(n) { PuzzleBlock(context, 0, 0F, 0F, 0F) } }
 
     var emptyBlockIndex = Point()
 
@@ -55,7 +53,7 @@ class PuzzleBoardView(context: Context, val n: Int) : View(context) {
 
         for (i in 0 until mat.size) {
             for (j in 0 until mat[0].size) {
-                mat[i][j] = PuzzleBlock(list[ID], x.toFloat(), y.toFloat(), size.toFloat())
+                mat[i][j] = PuzzleBlock(context, list[ID], x.toFloat(), y.toFloat(), size.toFloat())
                 if (list[ID] == 0) {
                     emptyBlockIndex = Point(i, j)
                 }
