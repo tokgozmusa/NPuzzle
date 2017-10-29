@@ -1,6 +1,7 @@
 package com.example.npuzzle
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.util.Log
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.fragment_puzzle.*
 class PuzzleFragment : Fragment() {
 
     val TAG = "PuzzleFragment"
+
+    val n: Int = 4
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -33,7 +36,7 @@ class PuzzleFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val puzzleBoardView = PuzzleBoardView(context)
+        val puzzleBoardView = PuzzleBoardView(context, n)
         puzzle_container.addView(puzzleBoardView)
     }
 
