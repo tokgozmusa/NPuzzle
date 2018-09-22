@@ -12,7 +12,6 @@ import android.view.MotionEvent
 import android.view.View
 import java.util.*
 
-
 @SuppressLint("ViewConstructor")
 /**
  * Created by tokgozmusa on 28/10/2017.

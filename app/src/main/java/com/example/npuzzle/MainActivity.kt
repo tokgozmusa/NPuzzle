@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun hideAppTitle() {
-        this.getSupportActionBar()!!.hide();
+        this.getSupportActionBar()!!.hide()
     }
 
     fun hideStatusBar() {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
     fun hideNavigationBar() {
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun showMainFragment() {
-        val transaction = manager.beginTransaction();
+        val transaction = manager.beginTransaction()
         val fragment = MainFragment()
         transaction.replace(R.id.fragment_holder, fragment)
         transaction.commit()
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     fun showPuzzleFragment(newN: Int) {
         n = newN
-        val transaction = manager.beginTransaction();
+        val transaction = manager.beginTransaction()
         val fragment = PuzzleFragment()
         transaction.replace(R.id.fragment_holder, fragment)
         transaction.addToBackStack(null)

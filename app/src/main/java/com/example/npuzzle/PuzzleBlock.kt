@@ -19,14 +19,14 @@ class PuzzleBlock(val context: Context, var ID: Int, val x: Float, val y: Float,
         if (ID == 0) {
             paint.style = Paint.Style.FILL
             paint.color = ContextCompat.getColor(context, R.color.gameBackground)
-            canvas.drawRect(x, y, x + size, y + size, paint);
+            canvas.drawRect(x, y, x + size, y + size, paint)
             return
         }
 
         // fill
         paint.style = Paint.Style.FILL
         paint.color = ContextCompat.getColor(context, R.color.puzzleBlock)
-        canvas.drawRect(x, y, x + size, y + size, paint);
+        canvas.drawRect(x, y, x + size, y + size, paint)
 
         // text
         paint.textSize = textSize * context.resources.displayMetrics.scaledDensity
@@ -34,12 +34,10 @@ class PuzzleBlock(val context: Context, var ID: Int, val x: Float, val y: Float,
         paint.color = ContextCompat.getColor(context, R.color.puzzleBlockText)
         canvas.drawText(ID.toString(), x + size / 2, y + size / 2 - ((paint.descent() + paint.ascent()) / 2), paint)
 
-        //border
+        // border
         paint.style = Paint.Style.STROKE
         paint.color = ContextCompat.getColor(context, R.color.gameBackground)
         paint.strokeWidth = strokeWidth * context.resources.displayMetrics.scaledDensity
-        canvas.drawRect(x, y, x + size, y + size, paint);
+        canvas.drawRect(x, y, x + size, y + size, paint)
     }
-
-
 }
