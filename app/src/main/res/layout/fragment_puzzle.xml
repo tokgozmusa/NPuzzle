@@ -5,42 +5,47 @@
               android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text="@string/instruction"/>
+            android:id="@+id/textView_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/instruction"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/button_new_game"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="5dp"
-            android:text="@string/new_game"/>
+            android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button_solve"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="5dp"
-            android:text="@string/solve"/>
+                android:id="@+id/button_new_game"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="@string/new_game"/>
+
+        <Button
+                android:id="@+id/button_solve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/solve"/>
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/puzzle_container"
-        android:layout_margin="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:id="@+id/puzzle_container"
+            android:layout_margin="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
     </RelativeLayout>
 

@@ -14,21 +14,21 @@ import kotlinx.android.synthetic.main.fragment_puzzle.*
 
 class PuzzleFragment : Fragment() {
 
-    val TAG = "PuzzleFragment"
+    private val logTag = "PuzzleFragment"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d(TAG, "onCreate")
+        Log.d(logTag, "onCreate")
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        // return super.onCreateView(inflater, container, savedInstanceState)
-        return inflater!!.inflate(R.layout.fragment_puzzle, container, false)
-    }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
+        inflater.inflate(R.layout.fragment_puzzle, container, false)
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val puzzleBoardView = PuzzleBoardView(context, (context as MainActivity).n)
+
+        val mainActivity: MainActivity = activity as MainActivity
+        val puzzleBoardView = PuzzleBoardView(context, mainActivity.n)
         puzzle_container.addView(puzzleBoardView)
 
         button_new_game.setOnClickListener {

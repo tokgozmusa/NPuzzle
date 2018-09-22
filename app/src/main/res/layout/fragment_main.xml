@@ -6,31 +6,31 @@
               android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginBottom="40dp"
-        android:textSize="30sp"/>
+            android:id="@+id/textView_app_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginBottom="40dp"
+            android:textSize="30sp"/>
 
     <Button
-        android:id="@+id/button_three_x_three"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/threeXthree"/>
+            android:id="@+id/button_three_x_three"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/threeXthree"/>
 
     <Button
-        android:id="@+id/button_four_x_four"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fourXfour"/>
+            android:id="@+id/button_four_x_four"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fourXfour"/>
 
     <Button
-        android:id="@+id/button_five_x_five"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/fiveXfive"/>
+            android:id="@+id/button_five_x_five"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fiveXfive"/>
 
 </LinearLayout>

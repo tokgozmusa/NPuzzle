@@ -9,10 +9,16 @@ import android.support.v4.content.ContextCompat
  * Created by tokgozmusa on 28/10/2017.
  */
 
-class PuzzleBlock(val context: Context, var ID: Int, val x: Float, val y: Float, val size: Float) {
+class PuzzleBlock(
+    private val context: Context,
+    var ID: Int,
+    private val x: Float,
+    private val y: Float,
+    private val size: Float
+) {
 
-    val textSize = 25
-    val strokeWidth = 3
+    private val textSize = 25
+    private val strokeWidth = 3
 
     fun onDraw(canvas: Canvas, paint: Paint) {
         // if empty block
