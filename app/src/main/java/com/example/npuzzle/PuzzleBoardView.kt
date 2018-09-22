@@ -10,7 +10,7 @@ import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import java.util.*
+import java.util.Collections
 
 @SuppressLint("ViewConstructor")
 /**
